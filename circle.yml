@@ -5,3 +5,15 @@ machine:
 dependencies:
   pre:
     - npm install -g appium
+
+test:
+  pre: 
+    appium > file &
+  override:    
+    - |
+      while [ true ]
+      do
+         if [ -s ./file ]; then
+           break;
+         fi
+      done
